@@ -1,0 +1,90 @@
+# Databricks Data Room Configuration
+
+# Databricks Settings
+databricks:
+  catalog: "main"                    # Unity Catalog name
+  schema: "dataroom"                 # Schema/database name
+  volume_path: "/Volumes/main/dataroom/documents"  # Unity Catalog volume for documents
+
+# Document Storage Paths
+storage:
+  raw_documents: "/dbfs/dataroom/raw"
+  processed_documents: "/dbfs/dataroom/processed"
+
+# Model Configuration
+models:
+  # Databricks Foundation Models
+  analysis_model: "databricks-dbrx-instruct"       # For investment analysis
+  general_model: "databricks-meta-llama-3-1-70b-instruct"  # General purpose
+  fast_model: "databricks-mixtral-8x7b-instruct"   # Classification, quick tasks
+
+  # Embedding Model (sentence-transformers)
+  embedding_model: "BAAI/bge-large-en-v1.5"        # Best open-source embeddings
+  embedding_dimension: 1024
+
+# Vector Search Configuration
+vector_search:
+  endpoint_name: "dataroom_vs_endpoint"
+  index_name: "company_documents_index"
+  chunk_size: 800                    # Tokens per chunk
+  chunk_overlap: 200                 # Overlap between chunks
+
+# Document Processing
+processing:
+  # Document type classification keywords
+  document_types:
+    financial:
+      keywords: ["financial", "p&l", "profit", "loss", "balance sheet", "cash flow", "income statement", "revenue", "expenses"]
+      extensions: [".xlsx", ".xls", ".csv"]
+    pitch_deck:
+      keywords: ["pitch", "deck", "presentation", "overview", "company presentation"]
+      extensions: [".pdf", ".pptx"]
+    technical:
+      keywords: ["technical", "architecture", "system design", "api", "documentation", "engineering"]
+      extensions: [".pdf", ".md", ".docx"]
+    legal:
+      keywords: ["legal", "contract", "agreement", "terms", "cap table", "incorporation"]
+      extensions: [".pdf", ".docx"]
+    product:
+      keywords: ["product", "roadmap", "features", "user", "customer"]
+      extensions: [".pdf", ".docx"]
+
+  # Table extraction settings
+  table_extraction:
+    min_rows: 3
+    confidence_threshold: 0.7
+
+# Investment Analysis
+analysis:
+  # Analysis dimensions
+  dimensions:
+    - market_opportunity
+    - competitive_moat
+    - team_quality
+    - financial_health
+    - product_differentiation
+    - growth_potential
+    - risk_factors
+
+  # Scoring weights
+  scoring_weights:
+    market_opportunity: 0.20
+    competitive_moat: 0.20
+    team_quality: 0.15
+    financial_health: 0.15
+    product_differentiation: 0.15
+    growth_potential: 0.10
+    risk_factors: 0.05
+
+  # Investment thresholds
+  thresholds:
+    strong_buy: 8.0
+    buy: 7.0
+    hold: 5.0
+    pass: 0.0
+
+# UI Configuration
+ui:
+  app_title: "VC Due Diligence Data Room"
+  companies_per_page: 10
+  max_file_upload_mb: 100
