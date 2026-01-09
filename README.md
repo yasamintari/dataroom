@@ -28,10 +28,10 @@ AI-powered data room for venture capital due diligence with multi-company suppor
 
 - **Storage & Processing**: Databricks (Delta Lake, Unity Catalog, PySpark)
 - **Vector Search**: Databricks Vector Search
-- **LLMs**: Databricks Foundation Models
-  - DBRX Instruct (analysis and reasoning)
-  - Llama 3.1 70B (general purpose)
-  - Mixtral 8x7B (fast classification)
+- **LLMs**: Flexible model support (configured in `config.yaml`)
+  - **Default**: Databricks Foundation Models (GPT-OSS-20B, DBRX, Llama, Mixtral)
+  - **Optional**: OpenAI (GPT-4, GPT-3.5), Anthropic (Claude), Google (Gemini)
+  - **Switch models with zero code changes** - see [Model Switching Guide](docs/MODEL_SWITCHING.md)
 - **Embeddings**: BGE-large (sentence-transformers)
 - **Document Processing**:
   - PyMuPDF (fitz) - PDF extraction
@@ -92,6 +92,18 @@ Copy `.env.example` to `.env` and update:
 cp .env.example .env
 # Edit .env with your Databricks settings
 ```
+
+4. **Configure models** (Optional)
+
+Edit `config/config.yaml` to select your LLM:
+
+```yaml
+models:
+  primary_model: "databricks-gpt-oss-20b"  # Change this to any supported model
+  provider: "databricks"                    # databricks | openai | anthropic | google
+```
+
+See [Model Switching Guide](docs/MODEL_SWITCHING.md) for all options. **No code changes needed to switch models!**
 
 ### Setup Steps
 

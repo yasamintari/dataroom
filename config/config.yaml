@@ -13,10 +13,30 @@ storage:
 
 # Model Configuration
 models:
-  # Databricks Foundation Models
-  analysis_model: "databricks-dbrx-instruct"       # For investment analysis
-  general_model: "databricks-meta-llama-3-1-70b-instruct"  # General purpose
-  fast_model: "databricks-mixtral-8x7b-instruct"   # Classification, quick tasks
+  # Primary LLM for all tasks (analysis, Q&A, classification)
+  # Databricks Foundation Models (available via Model Serving):
+  #   - databricks-gpt-oss-20b (balanced performance/cost)
+  #   - databricks-dbrx-instruct (best quality)
+  #   - databricks-meta-llama-3-1-70b-instruct
+  #   - databricks-mixtral-8x7b-instruct (fastest)
+  # External Models (requires API keys in .env):
+  #   - gpt-4 / gpt-3.5-turbo (OpenAI)
+  #   - claude-3-opus / claude-3-sonnet (Anthropic)
+  #   - gemini-pro (Google)
+
+  primary_model: "databricks-gpt-oss-20b"
+
+  # Optional: Use different models for specific tasks (set to null to use primary_model)
+  analysis_model: null      # Investment analysis (null = use primary_model)
+  qa_model: null            # Q&A responses (null = use primary_model)
+  classification_model: null # Document classification (null = use primary_model)
+
+  # Model provider: databricks | openai | anthropic | google
+  provider: "databricks"
+
+  # Model parameters
+  temperature: 0.1          # Lower = more deterministic
+  max_tokens: 500           # Max response length
 
   # Embedding Model (sentence-transformers)
   embedding_model: "BAAI/bge-large-en-v1.5"        # Best open-source embeddings
