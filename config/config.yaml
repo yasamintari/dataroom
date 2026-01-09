@@ -2,14 +2,14 @@
 
 # Databricks Settings
 databricks:
-  catalog: "main"                    # Unity Catalog name
+  catalog: "yasamin_tari"            # Unity Catalog name
   schema: "dataroom"                 # Schema/database name
-  volume_path: "/Volumes/main/dataroom/documents"  # Unity Catalog volume for documents
+  volume_path: "/Volumes/yasamin_tari/dataroom/documents"  # Unity Catalog volume for documents
 
 # Document Storage Paths
 storage:
-  raw_documents: "/dbfs/dataroom/raw"
-  processed_documents: "/dbfs/dataroom/processed"
+  raw_documents: "/Volumes/yasamin_tari/dataroom/raw"
+  processed_documents: "/Volumes/yasamin_tari/dataroom/processed"
 
 # Model Configuration
 models:

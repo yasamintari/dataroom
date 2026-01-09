@@ -19,7 +19,7 @@ class CompanyQA:
         vector_search_client,
         llm_client,
         index_name: str,
-        catalog: str = "main",
+        catalog: str = "yasamin_tari",
         schema: str = "dataroom"
     ):
         """
@@ -338,9 +338,9 @@ class LLMClient:
 
 # Convenience function
 def create_company_qa_system(
-    catalog: str = "main",
+    catalog: str = "yasamin_tari",
     schema: str = "dataroom",
-    model_name: str = "databricks-dbrx-instruct"
+    model_name: str = "databricks-gpt-oss-20b"
 ) -> CompanyQA:
     """
     Create a company Q&A system.

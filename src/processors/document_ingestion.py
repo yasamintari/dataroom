@@ -27,9 +27,9 @@ class DocumentIngestion:
 
     def __init__(
         self,
-        storage_path: str = "/dbfs/dataroom/raw",
+        storage_path: str = "/Volumes/yasamin_tari/dataroom/raw",
         spark_session=None,
-        catalog: str = "main",
+        catalog: str = "yasamin_tari",
         schema: str = "dataroom"
     ):
         """
@@ -400,7 +400,7 @@ class DocumentIngestion:
 def ingest_company_from_folder(
     company_name: str,
     folder_path: str,
-    storage_path: str = "/dbfs/dataroom/raw",
+    storage_path: str = "/Volumes/yasamin_tari/dataroom/raw",
     spark_session=None,
     company_metadata: Optional[Dict] = None
 ) -> Dict:
@@ -424,7 +424,7 @@ def ingest_company_from_folder(
 def download_documents_from_urls(
     company_id: str,
     urls: List[str],
-    storage_path: str = "/dbfs/dataroom/raw",
+    storage_path: str = "/Volumes/yasamin_tari/dataroom/raw",
     spark_session=None
 ) -> List[Dict]:
     """

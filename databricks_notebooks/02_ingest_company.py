@@ -23,9 +23,9 @@ Use this for each company you want to add to the data room.
 
 # COMMAND ----------
 # Configuration
-CATALOG = "main"
+CATALOG = "yasamin_tari"
 SCHEMA = "dataroom"
-STORAGE_PATH = "/dbfs/dataroom/raw"
+STORAGE_PATH = "/Volumes/yasamin_tari/dataroom/raw"
 
 # COMMAND ----------
 # MAGIC %md

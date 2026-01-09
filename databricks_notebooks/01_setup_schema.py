@@ -23,9 +23,11 @@ Run this notebook ONCE to initialize the data room infrastructure.
 
 # COMMAND ----------
 # Configuration
-CATALOG = "main"
+CATALOG = "yasamin_tari"
 SCHEMA = "dataroom"
 VOLUME_NAME = "documents"
+RAW_VOLUME = "raw"
+PROCESSED_VOLUME = "processed"
 
 # Table names
 TABLES = [
@@ -55,17 +57,31 @@ print(f"✓ Using schema {CATALOG}.{SCHEMA}")
 
 # COMMAND ----------
 # MAGIC %md
-# MAGIC ## 2. Create Unity Catalog Volume for Document Storage
+# MAGIC ## 2. Create Unity Catalog Volumes for Document Storage
 
 # COMMAND ----------
-try:
-    spark.sql(f"""
-        CREATE VOLUME IF NOT EXISTS {CATALOG}.{SCHEMA}.{VOLUME_NAME}
-    """)
-    print(f"✓ Volume {CATALOG}.{SCHEMA}.{VOLUME_NAME} created")
-except Exception as e:
-    print(f"Note: Volume creation might require Unity Catalog setup. Error: {e}")
-    print("Alternative: Using DBFS paths instead")
+# Create volumes for document storage
+volumes = [
+    (VOLUME_NAME, "Main document storage"),
+    (RAW_VOLUME, "Raw/unprocessed documents"),
+    (PROCESSED_VOLUME, "Processed documents")
+]
+
+for volume_name, description in volumes:
+    try:
+        spark.sql(f"""
+            CREATE VOLUME IF NOT EXISTS {CATALOG}.{SCHEMA}.{volume_name}
+            COMMENT '{description}'
+        """)
+        print(f"✓ Volume {CATALOG}.{SCHEMA}.{volume_name} created - {description}")
+    except Exception as e:
+        print(f"⚠ Volume creation error for {volume_name}: {e}")
+        print("  Note: Ensure Unity Catalog is enabled and you have CREATE VOLUME permissions")
+
+print(f"\n✓ Volume paths:")
+print(f"  - Documents: /Volumes/{CATALOG}/{SCHEMA}/{VOLUME_NAME}")
+print(f"  - Raw: /Volumes/{CATALOG}/{SCHEMA}/{RAW_VOLUME}")
+print(f"  - Processed: /Volumes/{CATALOG}/{SCHEMA}/{PROCESSED_VOLUME}")
 
 # COMMAND ----------
 # MAGIC %md

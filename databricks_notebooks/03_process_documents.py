@@ -23,9 +23,9 @@ Run this after ingesting documents with 02_ingest_company.py
 
 # COMMAND ----------
 # Configuration
-CATALOG = "main"
+CATALOG = "yasamin_tari"
 SCHEMA = "dataroom"
-STORAGE_PATH = "/dbfs/dataroom/raw"
+STORAGE_PATH = "/Volumes/yasamin_tari/dataroom/raw"
 CHUNK_SIZE = 800  # characters
 CHUNK_OVERLAP = 200
 
