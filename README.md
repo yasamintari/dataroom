@@ -2,7 +2,7 @@
 
 AI-powered data room for venture capital due diligence with multi-company support, automatic document processing, and investment analysis.
 
-## 🎯 Features
+##  Features
 
 - **Multi-company document management** with nested folder structures
 - **Automatic document categorization** (financials, pitch decks, technical docs, legal, etc.)
@@ -20,7 +20,7 @@ AI-powered data room for venture capital due diligence with multi-company suppor
 - **Automated investment memo generation**
 - **Web UI** for easy interaction
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Technology Stack
 
@@ -62,7 +62,7 @@ Company
     └── Recommendations
 ```
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -189,7 +189,7 @@ print(f"Score: {analysis['overall_score']}/10")
 print(f"Recommendation: {analysis['recommendation']}")
 ```
 
-## 📊 Usage Examples
+##  Usage Examples
 
 ### Ingesting a Company
 
@@ -243,7 +243,7 @@ print(f"Recommendation: {analysis['recommendation'].upper()}")
 print(f"\nExecutive Summary:\n{analysis['executive_summary']}")
 ```
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 dataroom/
@@ -273,7 +273,7 @@ dataroom/
 └── README.md                   # This file
 ```
 
-## 🎨 Key Components
+##  Key Components
 
 ### Document Classification
 
@@ -322,7 +322,7 @@ Generates:
 - Key risks and opportunities
 - Next steps for diligence
 
-## 🔧 Configuration
+##  Configuration
 
 Edit `config/config.yaml` to customize:
 
@@ -333,7 +333,7 @@ Edit `config/config.yaml` to customize:
 - Document classification keywords
 - Analysis weights and thresholds
 
-## 📈 Performance Tips
+##  Performance Tips
 
 1. **Batch Processing**: Process multiple companies in parallel
 2. **Incremental Updates**: Only process new/updated documents
@@ -343,7 +343,7 @@ Edit `config/config.yaml` to customize:
    - Use DBRX for analysis (best quality)
 5. **Vector Search**: Use filters to reduce search space
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Vector Search Not Available
 
@@ -365,14 +365,14 @@ Check:
 2. File is not corrupted
 3. Sufficient memory for large files
 
-## 🔐 Security Considerations
+##  Security Considerations
 
 - Documents are stored in Databricks DBFS/Unity Catalog (secure by default)
 - Use Unity Catalog for fine-grained access control
 - API tokens should be stored securely (use Databricks Secrets)
 - Consider data retention policies for sensitive documents
 
-## 🎓 Next Steps
+##  Next Steps
 
 1. **Add more document types**: PowerPoint, images (OCR), audio transcripts
 2. **Enhance financial extraction**: Support more complex tables and calculations
@@ -381,11 +381,11 @@ Check:
 5. **Collaboration**: Add comments, sharing, and team features
 6. **Integrations**: Connect to deal flow systems, CRM, data rooms (DocSend, etc.)
 
-## 📝 License
+##  License
 
 MIT License - feel free to use and modify for your needs.
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions welcome! Areas for improvement:
 - Additional document processors
@@ -394,7 +394,7 @@ Contributions welcome! Areas for improvement:
 - More analysis dimensions
 - Performance optimizations
 
-## 📞 Support
+##  Support
 
 For issues or questions:
 - Check documentation in `docs/`
